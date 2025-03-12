@@ -5,152 +5,669 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Pedidos</title>
     <style>
+        /* Estilos */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #007bff;
+            padding: 15px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+        }
+        .category-container {
             margin: 20px;
         }
-        h1 {
-            color: #333;
+        .category {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
         .product {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 10px;
+            text-align: center;
         }
         .product img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
-        button {
-            margin-left: auto;
-            padding: 5px 10px;
-            background-color: #5cb85c;
+        .product button {
+            background-color: #28a745;
             color: white;
             border: none;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
-        button:hover {
-            background-color: #4cae4c;
+        .product button:hover {
+            background-color: #218838;
         }
         #cart {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        #cart h3 {
+            margin-bottom: 15px;
+        }
+        #cartItems {
+            margin-bottom: 15px;
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
-            margin: 5px 0;
+            margin: 10px 0;
         }
-        .cart-item span {
-            font-size: 16px;
+        .cart-item button {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cart-item button:hover {
+            background-color: #c82333;
         }
         #sendOrder {
-            margin-top: 20px;
-            padding: 10px 15px;
             background-color: #007bff;
             color: white;
+            padding: 10px 20px;
             border: none;
+            border-radius: 5px;
+            width: 100%;
             cursor: pointer;
         }
         #sendOrder:hover {
             background-color: #0056b3;
         }
+        #yourOrder {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #yourOrder h3 {
+            margin-bottom: 20px;
+        }
+        #yourOrder ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+        }
+        #yourOrder ul li {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Haz tu Pedido</h1>
-    <div id="products">
+
+<header>
+    Haz tu Pedido
+</header>
+
+<div class="category-container">
+    <div class="category">Bebidas</div>
+    <div class="product-container">
         <div class="product">
-            <img src="https://via.placeholder.com/50" alt="Café">
-            <span>Café</span>
-            <button onclick="addToCart('Café')">Añadir</button>
+            <h4>Coca-Cola</h4>
+            <button onclick="addToCart('Coca-Cola')">Añadir</button>
         </div>
         <div class="product">
-            <img src="https://via.placeholder.com/50" alt="Té">
-            <span>Té</span>
-            <button onclick="addToCart('Té')">Añadir</button>
+            <h4>Pepsi</h4>
+            <button onclick="addToCart('Pepsi')">Añadir</button>
         </div>
         <div class="product">
-            <img src="https://via.placeholder.com/50" alt="Sándwich">
-            <span>Sándwich</span>
-            <button onclick="addToCart('Sándwich')">Añadir</button>
+            <h4>Sprite</h4>
+            <button onclick="addToCart('Sprite')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Fanta Naranja</h4>
+            <button onclick="addToCart('Fanta Naranja')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Fanta Limón</h4>
+            <button onclick="addToCart('Fanta Limón')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Agua Mineral</h4>
+            <button onclick="addToCart('Agua Mineral')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tónica</h4>
+            <button onclick="addToCart('Tónica')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Té Helado</h4>
+            <button onclick="addToCart('Té Helado')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Zumo de Naranja</h4>
+            <button onclick="addToCart('Zumo de Naranja')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Zumo de Manzana</h4>
+            <button onclick="addToCart('Zumo de Manzana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Agua con Gas</h4>
+            <button onclick="addToCart('Agua con Gas')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Limonada</h4>
+            <button onclick="addToCart('Limonada')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Café Frío</h4>
+            <button onclick="addToCart('Café Frío')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Batido de Fresa</h4>
+            <button onclick="addToCart('Batido de Fresa')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Batido de Chocolate</h4>
+            <button onclick="addToCart('Batido de Chocolate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Batido de Vainilla</h4>
+            <button onclick="addToCart('Batido de Vainilla')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Refresco de Lima</h4>
+            <button onclick="addToCart('Refresco de Lima')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Refresco de Frutos Rojos</h4>
+            <button onclick="addToCart('Refresco de Frutos Rojos')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Horchata</h4>
+            <button onclick="addToCart('Horchata')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Granizado de Limón</h4>
+            <button onclick="addToCart('Granizado de Limón')">Añadir</button>
         </div>
     </div>
+</div>
 
-    <div id="cart">
-        <h3>Cesta de Pedidos</h3>
-        <label for="tableSelect">Selecciona la mesa:</label>
-        <select id="tableSelect">
-            <option value="mesa1">Mesa 1</option>
-            <option value="mesa2">Mesa 2</option>
-            <option value="mesa3">Mesa 3</option>
-        </select>
-        <div id="cartItems"></div>
-        <button id="sendOrder" onclick="sendOrder()">Enviar Pedido</button>
+<div class="category-container">
+    <div class="category">Pizzas</div>
+    <div class="product-container">
+        <div class="product">
+            <h4>Pizza Margarita</h4>
+            <button onclick="addToCart('Pizza Margarita')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Pepperoni</h4>
+            <button onclick="addToCart('Pizza Pepperoni')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Hawaiana</h4>
+            <button onclick="addToCart('Pizza Hawaiana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Champiñones</h4>
+            <button onclick="addToCart('Pizza de Champiñones')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Cuatro Quesos</h4>
+            <button onclick="addToCart('Pizza Cuatro Quesos')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Mexicana</h4>
+            <button onclick="addToCart('Pizza Mexicana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Napolitana</h4>
+            <button onclick="addToCart('Pizza Napolitana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Vegetariana</h4>
+            <button onclick="addToCart('Pizza Vegetariana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Barbacoa</h4>
+            <button onclick="addToCart('Pizza Barbacoa')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Marinera</h4>
+            <button onclick="addToCart('Pizza Marinera')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Pollo</h4>
+            <button onclick="addToCart('Pizza de Pollo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Carbonara</h4>
+            <button onclick="addToCart('Pizza Carbonara')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Diavola</h4>
+            <button onclick="addToCart('Pizza Diavola')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Espinacas</h4>
+            <button onclick="addToCart('Pizza de Espinacas')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Caprese</h4>
+            <button onclick="addToCart('Pizza Caprese')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Calzone</h4>
+            <button onclick="addToCart('Pizza Calzone')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Prosciutto</h4>
+            <button onclick="addToCart('Pizza Prosciutto')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Salami</h4>
+            <button onclick="addToCart('Pizza de Salami')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Gourmet</h4>
+            <button onclick="addToCart('Pizza Gourmet')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Jalapeños</h4>
+            <button onclick="addToCart('Pizza de Jalapeños')">Añadir</button>
+        </div>
     </div>
+</div>
 
-    <script>
-        let cart = [];
 
-        // Añadir producto a la cesta
-        function addToCart(product) {
-            cart.push(product);
-            updateCart();
+<div class="category-container">
+    <div class="category">Raciones</div>
+    <div class="product-container">
+        <div class="product">
+            <h4>Papas Fritas</h4>
+            <button onclick="addToCart('Papas Fritas')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Aros de Cebolla</h4>
+            <button onclick="addToCart('Aros de Cebolla')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Alitas de Pollo</h4>
+            <button onclick="addToCart('Alitas de Pollo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Nachos</h4>
+            <button onclick="addToCart('Nachos')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Ensalada César</h4>
+            <button onclick="addToCart('Ensalada César')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Papas con Bacon</h4>
+            <button onclick="addToCart('Papas con Bacon')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Gambas al Ajillo</h4>
+            <button onclick="addToCart('Gambas al Ajillo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tostadas con Tomate</h4>
+            <button onclick="addToCart('Tostadas con Tomate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Croquetas Caseras</h4>
+            <button onclick="addToCart('Croquetas Caseras')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Bravas</h4>
+            <button onclick="addToCart('Bravas')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Calamares Fritos</h4>
+            <button onclick="addToCart('Calamares Fritos')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Jamón Ibérico</h4>
+            <button onclick="addToCart('Jamón Ibérico')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Empanadillas</h4>
+            <button onclick="addToCart('Empanadillas')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza de Jamón</h4>
+            <button onclick="addToCart('Pizza de Jamón')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pizza Vegetariana</h4>
+            <button onclick="addToCart('Pizza Vegetariana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hummus con Pan de Pita</h4>
+            <button onclick="addToCart('Hummus con Pan de Pita')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tacos de Pollo</h4>
+            <button onclick="addToCart('Tacos de Pollo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Papas Deluxe</h4>
+            <button onclick="addToCart('Papas Deluxe')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tempura de Verduras</h4>
+            <button onclick="addToCart('Tempura de Verduras')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Dátiles con Bacon</h4>
+            <button onclick="addToCart('Dátiles con Bacon')">Añadir</button>
+        </div>
+    </div>
+</div>
+
+<div class="category-container">
+    <div class="category">Hamburguesas</div>
+    <div class="product-container">
+        <div class="product">
+            <h4>Hamburguesa Clásica</h4>
+            <button onclick="addToCart('Hamburguesa Clásica')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Queso</h4>
+            <button onclick="addToCart('Hamburguesa con Queso')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa BBQ</h4>
+            <button onclick="addToCart('Hamburguesa BBQ')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Doble</h4>
+            <button onclick="addToCart('Hamburguesa Doble')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Bacon</h4>
+            <button onclick="addToCart('Hamburguesa con Bacon')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa de Pollo</h4>
+            <button onclick="addToCart('Hamburguesa de Pollo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Vegana</h4>
+            <button onclick="addToCart('Hamburguesa Vegana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Picante</h4>
+            <button onclick="addToCart('Hamburguesa Picante')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Guacamole</h4>
+            <button onclick="addToCart('Hamburguesa con Guacamole')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Champiñones</h4>
+            <button onclick="addToCart('Hamburguesa con Champiñones')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Italiana</h4>
+            <button onclick="addToCart('Hamburguesa Italiana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Tex-Mex</h4>
+            <button onclick="addToCart('Hamburguesa Tex-Mex')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa de Cordero</h4>
+            <button onclick="addToCart('Hamburguesa de Cordero')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa de Salmón</h4>
+            <button onclick="addToCart('Hamburguesa de Salmón')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Mini Hamburguesa</h4>
+            <button onclick="addToCart('Mini Hamburguesa')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa Gourmet</h4>
+            <button onclick="addToCart('Hamburguesa Gourmet')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Huevo</h4>
+            <button onclick="addToCart('Hamburguesa con Huevo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Jalapeños</h4>
+            <button onclick="addToCart('Hamburguesa con Jalapeños')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa de Atún</h4>
+            <button onclick="addToCart('Hamburguesa de Atún')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Hamburguesa con Queso Azul</h4>
+            <button onclick="addToCart('Hamburguesa con Queso Azul')">Añadir</button>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</div>
+
+<div class="category-container">
+    <div class="category">Postres</div>
+    <div class="product-container">
+        <div class="product">
+            <h4>Cheesecake</h4>
+            <button onclick="addToCart('Cheesecake')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tiramisú</h4>
+            <button onclick="addToCart('Tiramisú')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Crema Catalana</h4>
+            <button onclick="addToCart('Crema Catalana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Churros con Chocolate</h4>
+            <button onclick="addToCart('Churros con Chocolate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Flan de Caramelo</h4>
+            <button onclick="addToCart('Flan de Caramelo')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Helado de Fresa</h4>
+            <button onclick="addToCart('Helado de Fresa')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Panna Cotta</h4>
+            <button onclick="addToCart('Panna Cotta')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pastel de Manzana</h4>
+            <button onclick="addToCart('Pastel de Manzana')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Mousse de Chocolate</h4>
+            <button onclick="addToCart('Mousse de Chocolate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Magdalena</h4>
+            <button onclick="addToCart('Magdalena')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Brownie con Helado</h4>
+            <button onclick="addToCart('Brownie con Helado')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Donuts</h4>
+            <button onclick="addToCart('Donuts')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Galleta de Chocolate</h4>
+            <button onclick="addToCart('Galleta de Chocolate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Carrot Cake</h4>
+            <button onclick="addToCart('Carrot Cake')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Soufflé de Chocolate</h4>
+            <button onclick="addToCart('Soufflé de Chocolate')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Tarta de Limón</h4>
+            <button onclick="addToCart('Tarta de Limón')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Copa de Helado</h4>
+            <button onclick="addToCart('Copa de Helado')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Pastel de Queso con Fresa</h4>
+            <button onclick="addToCart('Pastel de Queso con Fresa')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Macarons</h4>
+            <button onclick="addToCart('Macarons')">Añadir</button>
+        </div>
+        <div class="product">
+            <h4>Bizcocho de Limón</h4>
+            <button onclick="addToCart('Bizcocho de Limón')">Añadir</button>
+        </div>
+        
+        
+    </div>
+</div>
+
+<div id="cart">
+    <h3>Cesta de Pedidos</h3>
+    <label for="tableSelect">Selecciona la mesa:</label>
+    <select id="tableSelect">
+        <option value="mesa1">Mesa 1</option>
+        <option value="mesa2">Mesa 2</option>
+        <option value="mesa3">Mesa 3</option>
+        <option value="mesa4">Mesa 4</option>
+        <option value="mesa5">Mesa 5</option>
+        <option value="mesa6">Mesa 6</option>
+        <option value="mesa7">Mesa 7</option>
+        <option value="mesa8">Mesa 8</option>
+        <option value="mesa9">Mesa 9</option>
+        <option value="mesa10">Mesa 10</option>
+        <option value="mesa11">Mesa 11</option>
+        <option value="mesa12">Mesa 12</option>
+    </select>
+
+    <div id="cartItems"></div>
+
+    <button id="sendOrder" onclick="sendOrder()">Enviar Pedido</button>
+</div>
+
+<div id="yourOrder">
+    <h3>Tu Pedido</h3>
+    <ul id="orderSummary"></ul>
+</div>
+
+<script>
+    let cart = [];
+
+    function addToCart(product) {
+        cart.push(product);
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        const orderSummary = document.getElementById('orderSummary');
+        cartItems.innerHTML = '';
+        orderSummary.innerHTML = '';
+
+        cart.forEach((item, index) => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <span>${item}</span>
+                <button onclick="removeFromCart(${index})">Eliminar</button>
+            `;
+            cartItems.appendChild(cartItem);
+
+            const orderItem = document.createElement('li');
+            orderItem.textContent = item;
+            orderSummary.appendChild(orderItem);
+        });
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    async function sendOrder() {
+        const table = document.getElementById('tableSelect').value;
+        if (cart.length === 0) {
+            alert('La cesta está vacía. Añade productos antes de enviar el pedido.');
+            return;
         }
 
-        // Actualizar la interfaz de la cesta
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            cartItems.innerHTML = '';
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item');
-                cartItem.innerHTML = `
-                    <span>${item}</span>
-                    <button onclick="removeFromCart(${index})">Eliminar</button>
-                `;
-                cartItems.appendChild(cartItem);
+        try {
+            const response = await fetch('https://53bd-159-147-180-34.ngrok-free.app/api/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ table, product: cart })
             });
-        }
 
-        // Eliminar un producto de la cesta
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        // Enviar pedido al servidor
-        async function sendOrder() {
-            const table = document.getElementById('tableSelect').value; // Obtener la mesa seleccionada
-            if (cart.length === 0) {
-                alert('La cesta está vacía. Añade productos antes de enviar el pedido.');
-                return;
+            if (response.ok) {
+                alert('Pedido enviado correctamente');
+                cart = [];
+                updateCart();
+            } else {
+                alert('Error al enviar el pedido.');
             }
-
-            try {
-                const response = await fetch('https://53bd-159-147-180-34.ngrok-free.app/api/orders', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ table, product: cart }) // Enviar la mesa y los productos
-                });
-
-                if (response.ok) {
-                    alert('Pedido enviado correctamente');
-                    cart = []; // Vaciar la cesta
-                    updateCart();
-                } else {
-                    alert('Error al enviar el pedido. Por favor, intenta de nuevo.');
-                }
-            } catch (error) {
-                console.error('Error de conexión:', error);
-                alert('No se pudo conectar con el servidor.');
-            }
+        } catch (error) {
+            console.error('Error de conexión:', error);
+            alert('No se pudo conectar con el servidor.');
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
